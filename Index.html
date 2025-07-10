@@ -1,0 +1,824 @@
+Here's the complete HTML code for your Myths & Elephants presentation:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myths & Elephants - Organizational Blind Spots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #533483);
+            background-size: 400% 400%;
+            animation: mysticalGradient 12s ease-in-out infinite;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        @keyframes mysticalGradient {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+
+        .presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 40px;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            border-radius: 25px;
+            pointer-events: none;
+            animation: orbitalMotion 15s linear infinite;
+        }
+
+        @keyframes orbitalMotion {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .slide h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #e6e6fa, #dda0dd, #ba55d3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: mysticalFlow 6s ease-in-out infinite;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes mysticalFlow {
+            0%, 100% { background-position: 0% 50%; }
+            33% { background-position: 100% 50%; }
+            66% { background-position: 50% 100%; }
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            width: 100%;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: mysticalShimmer 5s infinite;
+        }
+
+        @keyframes mysticalShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .content-rank {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #333;
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+            animation: floatGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes floatGlow {
+            0%, 100% { transform: translateY(0px) scale(1); box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4); }
+            50% { transform: translateY(-8px) scale(1.05); box-shadow: 0 12px 25px rgba(255, 215, 0, 0.6); }
+        }
+
+        .content-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .myth-title {
+            color: #ffd700;
+        }
+
+        .elephant-title {
+            color: #c0c0c0;
+        }
+
+        .content-count {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .content-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .content-list li {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .myth-list li::before {
+            content: '🦄';
+            position: absolute;
+            left: 0;
+            animation: sparkleFloat 3s ease-in-out infinite;
+        }
+
+        .elephant-list li::before {
+            content: '🐘';
+            position: absolute;
+            left: 0;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            25% { transform: translateX(3px) rotate(2deg); }
+            75% { transform: translateX(-3px) rotate(-2deg); }
+        }
+
+        .insight-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        .insight-title {
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
+        }
+
+        .insight-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        .disconnect-flow {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        .flow-title {
+            color: #ffd700;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .myth-reality {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .myth-side {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .reality-side {
+            background: rgba(192, 192, 192, 0.15);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(192, 192, 192, 0.3);
+        }
+
+        .vs-arrow {
+            color: #ff6b6b;
+            font-size: 2rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .summary-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            display: block;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-label {
+            color: white;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 15px 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .dots-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dot.active {
+            background: #ffd700;
+            transform: scale(1.4);
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .transformation-phases {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .phase-title {
+            color: #ffd700;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .phase-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .elephant-card {
+            border-left: 4px solid #c0c0c0;
+        }
+
+        .myth-card {
+            border-left: 4px solid #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>🔮 MYTHS & ELEPHANTS ANALYSIS</h1>
+            <div class="insight-box">
+                <div class="insight-title">Organizational Blind Spots & Hidden Truths</div>
+                <div class="insight-text">
+                    Analysis of 44 organizational myths (false beliefs) and 47 elephants in the room (hidden truths)<br>
+                    from your leadership team responses
+                </div>
+            </div>
+            
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <span class="stat-number">44</span>
+                    <div class="stat-label">Organizational Myths</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">47</span>
+                    <div class="stat-label">Elephants in Room</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">91</span>
+                    <div class="stat-label">Total Blind Spots</div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-title">🎯 KEY FINDING</div>
+                <div class="insight-text">
+                    Your organization has systematic gaps between what it believes about itself (myths) 
+                    and what's really happening (elephants). This creates a <strong>self-awareness crisis</strong> 
+                    blocking strategic progress.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Top Myths -->
+        <div class="slide">
+            <h2>🦄 TOP ORGANIZATIONAL MYTHS</h2>
+            <div class="content-grid">
+                <div class="content-card myth-card">
+                    <div class="content-rank">1</div>
+                    <div class="content-title myth-title">🔧 Technical Overconfidence</div>
+                    <div class="content-count">11 myths (25%)</div>
+                    <ul class="content-list myth-list">
+                        <li>"The amount of engineers we have lead to better products"</li>
+                        <li>"We can do anything and everything tungsten/molybdenum"</li>
+                        <li>"We have extensive test data for high-temperature performance"</li>
+                        <li>"We have the talent & motivation to grow profitably"</li>
+                    </ul>
+                    <div style="color: #ff6b6b; font-weight: 600; font-size: 0.9rem;">
+                        Reality Check: Quantity ≠ Quality, capabilities have gaps
+                    </div>
+                </div>
+
+                <div class="content-card myth-card">
+                    <div class="content-rank">2</div>
+                    <div class="content-title myth-title">✨ Quality Superiority Myths</div>
+                    <div class="content-count">8 myths (18%)</div>
+                    <ul class="content-list myth-list">
+                        <li>"Elmet has superior quality"</li>
+                        <li>"Great Quality"</li>
+                        <li>"All products used to be made without quality issues"</li>
+                        <li>"Better than Chinese competitors"</li>
+                    </ul>
+                    <div style="color: #ff6b6b; font-weight: 600; font-size: 0.9rem;">
+                        Reality Check: Quality issues are major dull spot causing customer losses
+                    </div>
+                </div>
+
+                <div class="content-card myth-card">
+                    <div class="content-rank">3</div>
+                    <div class="content-title myth-title">🎯 Market Position Myths</div>
+                    <div class="content-count">7 myths (16%)</div>
+                    <ul class="content-list myth-list">
+                        <li>"We have good customer service"</li>
+                        <li>"Our customers love us"</li>
+                        <li>"We are known in the industry"</li>
+                        <li>"Only US supplier"</li>
+                    </ul>
+                    <div style="color: #ff6b6b; font-weight: 600; font-size: 0.9rem;">
+                        Reality Check: Major customer losses indicate service problems
+                    </div>
+                </div>
+
+                <div class="content-card myth-card">
+                    <div class="content-rank">4</div>
+                    <div class="content-title myth-title">🤝 Unity & Integration Myths</div>
+                    <div class="content-count">6 myths (14%)</div>
+                    <ul class="content-list myth-list">
+                        <li>"We've done a great job merging"</li>
+                        <li>"We are working well as one team"</li>
+                        <li>"We have the right team and structure"</li>
+                        <li>"No reason we can't make everything well"</li>
+                    </ul>
+                    <div style="color: #ff6b6b; font-weight: 600; font-size: 0.9rem;">
+                        Reality Check: Multiple dull spots show lack of alignment
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Top Elephants -->
+        <div class="slide">
+            <h2>🐘 TOP ELEPHANTS IN THE ROOM</h2>
+            <div class="content-grid">
+                <div class="content-card elephant-card">
+                    <div class="content-rank">1</div>
+                    <div class="content-title elephant-title">🚫 Performance Avoidance</div>
+                    <div class="content-count">8 elephants (17%)</div>
+                    <ul class="content-list elephant-list">
+                        <li>"Opinions about under performance get talked about behind closed doors"</li>
+                        <li>"Honest feedback on performance"</li>
+                        <li>"Fear of conflict - criticism not specific but generalized"</li>
+                        <li>"Goals and targets without accountability"</li>
+                    </ul>
+                    <div style="color: #c0c0c0; font-weight: 600; font-size: 0.9rem;">
+                        Hidden Impact: Problems persist because they're not addressed directly
+                    </div>
+                </div>
+
+                <div class="content-card elephant-card">
+                    <div class="content-rank">2</div>
+                    <div class="content-title elephant-title">🏢 Organizational Structure Issues</div>
+                    <div class="content-count">7 elephants (15%)</div>
+                    <ul class="content-list elephant-list">
+                        <li>"Structure has led to disorganization and dysfunction"</li>
+                        <li>"Structure doesn't make sense for the business"</li>
+                        <li>"Some departments seem understaffed"</li>
+                        <li>"Changes made to prevent losing resources vs. business needs"</li>
+                    </ul>
+                    <div style="color: #c0c0c0; font-weight: 600; font-size: 0.9rem;">
+                        Hidden Impact: Inefficiency and confusion about roles/responsibilities
+                    </div>
+                </div>
+
+                <div class="content-card elephant-card">
+                    <div class="content-rank">3</div>
+                    <div class="content-title elephant-title">🎯 Strategic Misalignment</div>
+                    <div class="content-count">6 elephants (13%)</div>
+                    <ul class="content-list elephant-list">
+                        <li>"Lot of noise regarding going public"</li>
+                        <li>"IPO ambition driving short term decisions"</li>
+                        <li>"Lack of strategy to become competitive"</li>
+                        <li>"Confusing corporate structure"</li>
+                    </ul>
+                    <div style="color: #c0c0c0; font-weight: 600; font-size: 0.9rem;">
+                        Hidden Impact: Wasted energy, unclear priorities, short-term thinking
+                    </div>
+                </div>
+
+                <div class="content-card elephant-card">
+                    <div class="content-rank">4</div>
+                    <div class="content-title elephant-title">🎭 Cultural Dysfunction</div>
+                    <div class="content-count">5 elephants (11%)</div>
+                    <ul class="content-list elephant-list">
+                        <li>"Culture lacks sense of urgency"</li>
+                        <li>"Old cultural habits still creep in"</li>
+                        <li>"Avoiding risks at all costs"</li>
+                        <li>"We speculate far too often"</li>
+                    </ul>
+                    <div style="color: #c0c0c0; font-weight: 600; font-size: 0.9rem;">
+                        Hidden Impact: Slow response, risk aversion, protective behaviors
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Critical Disconnects -->
+        <div class="slide">
+            <h2>⚡ CRITICAL MYTH-REALITY DISCONNECTS</h2>
+            
+            <div class="disconnect-flow">
+                <div class="flow-title">🎭 QUALITY DISCONNECT</div>
+                <div class="myth-reality">
+                    <div class="myth-side">
+                        <strong>MYTH:</strong><br>"Elmet has superior quality"<br>"Great Quality"
+                    </div>
+                    <div class="vs-arrow">VS</div>
+                    <div class="reality-side">
+                        <strong>REALITY:</strong><br>Quality issues #3 dull spot<br>Customer losses due to quality
+                    </div>
+                </div>
+            </div>
+
+            <div class="disconnect-flow">
+                <div class="flow-title">🤝 TEAMWORK DISCONNECT</div>
+                <div class="myth-reality">
+                    <div class="myth-side">
+                        <strong>MYTH:</strong><br>"Working well as one team"<br>"Great job merging"
+                    </div>
+                    <div class="vs-arrow">VS</div>
+                    <div class="reality-side">
+                        <strong>REALITY:</strong><br>"Us vs them tone"<br>Lack of alignment across locations
+                    </div>
+                </div>
+            </div>
+
+            <div class="disconnect-flow">
+                <div class="flow-title">🎯 CUSTOMER SERVICE DISCONNECT</div>
+                <div class="myth-reality">
+                    <div class="myth-side">
+                        <strong>MYTH:</strong><br>"Good customer service"<br>"Our customers love us"
+                    </div>
+                    <div class="vs-arrow">VS</div>
+                    <div class="reality-side">
+                        <strong>REALITY:</strong><br>Major customer losses<br>Low quote win rates
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-title">💡 PATTERN RECOGNITION</div>
+                <div class="insight-text">
+                    Your organization consistently believes positive things about itself that contradict the operational reality. 
+                    This <strong>self-awareness gap</strong> prevents you from addressing root causes.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Transformation Plan -->
+        <div class="slide">
+            <h2>🚀 TRANSFORMATION TO ORGANIZATIONAL HONESTY</h2>
+            
+            <div class="transformation-phases">
+                <div class="phase-card">
+                    <div class="phase-title">PHASE 1: REALITY ASSESSMENT</div>
+                    <div class="phase-description">
+                        <strong>(0-3 months)</strong><br>
+                        • Conduct customer satisfaction surveys<br>
+                        • Reality-test all assumptions<br>
+                        • Address most critical elephants<br>
+                        • Start direct performance conversations
+                    </div>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-title">PHASE 2: MYTH REPLACEMENT</div>
+                    <div class="phase-description">
+                        <strong>(3-9 months)</strong><br>
+                        • Replace false beliefs with data<br>
+                        • Implement external benchmarking<br>
+                        • Complete cultural integration<br>
+                        • Establish transparency systems
+                    </div>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-title">PHASE 3: SUSTAINABLE HONESTY</div>
+                    <div class="phase-description">
+                        <strong>(9+ months)</strong><br>
+                        • Embed honest communication culture<br>
+                        • Maintain reality-based decisions<br>
+                        • Prevent myth re-emergence<br>
+                        • Sustain elephant-free environment
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box" style="margin-top: 40px;">
+                <div class="insight-title">⚠️ STRATEGIC IMPERATIVE</div>
+                <div class="insight-text">
+                    Move from <strong>self-deception to radical organizational honesty</strong>.<br>
+                    Start having direct conversations about uncomfortable realities.<br>
+                    Your competitive future depends on seeing and addressing what's really happening.
+                </div>
+            </div>
+
+            <div class="disconnect-flow">
+                <div class="flow-title">🎯 SUCCESS FORMULA</div>
+                <div style="color: white; font-size: 1.2rem; font-family: 'Courier New', monospace;">
+                    Myth Elimination + Elephant Addressing + Direct Communication = Organizational Self-Awareness
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <!-- Dots Navigation -->
+    <div class="dots-nav">
+        <div class="dot active" onclick="currentSlide(1)"></div>
+        <div class="dot" onclick="currentSlide(2)"></div>
+        <div class="dot" onclick="currentSlide(3)"></div>
+        <div class="dot" onclick="currentSlide(4)"></div>
+        <div class="dot" onclick="currentSlide(5)"></div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 1;
+        const totalSlides = 5;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n > totalSlides) currentSlideIndex = 1;
+            if (n < 1) currentSlideIndex = totalSlides;
+           slides.forEach(slide => slide.classList.remove('active'));
+           dots.forEach(dot => dot.classList.remove('active'));
+           
+           slides[currentSlideIndex - 1].classList.add('active');
+           dots[currentSlideIndex - 1].classList.add('active');
+       }
+
+       function nextSlide() {
+           showSlide(currentSlideIndex += 1);
+       }
+
+       function previousSlide() {
+           showSlide(currentSlideIndex -= 1);
+       }
+
+       function currentSlide(n) {
+           showSlide(currentSlideIndex = n);
+       }
+
+       // Keyboard navigation
+       document.addEventListener('keydown', function(e) {
+           if (e.key === 'ArrowLeft') previousSlide();
+           if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+       });
+
+       // Touch/swipe support
+       let startX = 0;
+       document.addEventListener('touchstart', function(e) {
+           startX = e.touches[0].clientX;
+       });
+
+       document.addEventListener('touchend', function(e) {
+           const endX = e.changedTouches[0].clientX;
+           const diff = startX - endX;
+           
+           if (Math.abs(diff) > 50) {
+               if (diff > 0) nextSlide();
+               else previousSlide();
+           }
+       });
+   </script>
+</body>
+</html>
